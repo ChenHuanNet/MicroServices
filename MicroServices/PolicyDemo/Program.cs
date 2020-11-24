@@ -75,12 +75,17 @@ namespace PolicyDemo
 
             //[连续]触发指定次数（2）的故障后，开启断路器（OPEN）,进入熔断状态 1分钟
             var breaker = Policy.Handle<Exception>().CircuitBreaker(2, TimeSpan.FromMinutes(1),
-                   (ex, span) =>
+                   onBreak: (ex, span) =>
                    {
                        //onBreak  进入熔断 OPEN
-                   }, () =>
+                   },
+                   onReset: () =>
                    {
                        //onReset  一分钟后就恢复了  CLOSED
+                   },
+                   onHalfOpen: () =>
+                   {
+
                    });
 
             CircuitState cs = breaker.CircuitState;
