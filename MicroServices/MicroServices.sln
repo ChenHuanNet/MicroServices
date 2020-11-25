@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceCustomer", "ServiceC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Policy", "Policy", "{73FF1A4B-2ABF-49F9-A1DE-CBADC80D58AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolicyDemo", "PolicyDemo\PolicyDemo.csproj", "{B4D85788-82ED-419F-84F7-0DA85EECFBF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolicyDemo", "PolicyDemo\PolicyDemo.csproj", "{B4D85788-82ED-419F-84F7-0DA85EECFBF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceCustomWithPolly", "ServiceCustomWithPolly\ServiceCustomWithPolly.csproj", "{5D649C49-5E43-4A55-829E-1FE929B054ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{B4D85788-82ED-419F-84F7-0DA85EECFBF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4D85788-82ED-419F-84F7-0DA85EECFBF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4D85788-82ED-419F-84F7-0DA85EECFBF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D649C49-5E43-4A55-829E-1FE929B054ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D649C49-5E43-4A55-829E-1FE929B054ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D649C49-5E43-4A55-829E-1FE929B054ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D649C49-5E43-4A55-829E-1FE929B054ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{6D957A2F-F0EE-45D5-9A4F-59B33D434CDD} = {02A631BB-56DA-484E-8471-199DEDFBF1DE}
 		{A479B4E5-51A1-4B21-AA10-C15D3781BA9B} = {02A631BB-56DA-484E-8471-199DEDFBF1DE}
 		{B4D85788-82ED-419F-84F7-0DA85EECFBF3} = {73FF1A4B-2ABF-49F9-A1DE-CBADC80D58AF}
+		{5D649C49-5E43-4A55-829E-1FE929B054ED} = {73FF1A4B-2ABF-49F9-A1DE-CBADC80D58AF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE1036A9-ED66-4774-8383-2A97899D0D27}

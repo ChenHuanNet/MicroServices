@@ -1,7 +1,9 @@
-﻿using ServiceDiscovery;
+﻿using ServiceCustomWithPolly;
+using ServiceDiscovery;
 using ServiceDiscovery.LoadBalancer;
 using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace ServiceCustomer
 {
@@ -17,20 +19,29 @@ namespace ServiceCustomer
                 builder.UriScheme = Uri.UriSchemeHttp;
             });
 
+
+            var policy = PolicyBuilder.CreatePolly();
+
             var httpClient = new HttpClient();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 100; i++)
             {
-                try
+                policy.Execute(() =>
                 {
-                    var uri = myServiceA.BuildAsync("/health").Result;
-                    Console.WriteLine($"{DateTime.Now} - 正在调用:{uri}");
-                    var content = httpClient.GetAsync(uri).Result;
-                    Console.WriteLine($"调用结果:{content}");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("调用异常:" + ex.GetType());
-                }
+                    try
+                    {
+                        var uri = myServiceA.BuildAsync("/health").Result;
+                        Console.WriteLine($"{DateTime.Now} - 正在调用:{uri}");
+                        var content = httpClient.GetAsync(uri).Result;
+                        Console.WriteLine($"调用结果:{content}");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("业务逻辑异常 ex:" + ex.GetType());
+                        throw ;
+                    }
+                });
+
+                Task.Delay(1000).Wait();
             }
 
             Console.Read();
