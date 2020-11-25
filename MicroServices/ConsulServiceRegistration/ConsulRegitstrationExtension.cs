@@ -48,7 +48,14 @@ namespace ConsulServiceRegistration
             });
 
             //获取当前服务地址和端口 
-            string address = serviceOptions.LocalAddress; //读配置文件
+            //string address = serviceOptions.LocalAddress; //读配置文件
+
+            var features = app.Properties["server.Features"] as FeatureCollection;
+            var address = features.Get<IServerAddressesFeature>().Addresses.FirstOrDefault();
+            if (string.IsNullOrEmpty(address))
+            {
+                address = serviceOptions.LocalAddress; //新版本不会增加默认的端口
+            }
 
             var uri = new Uri(address);
 

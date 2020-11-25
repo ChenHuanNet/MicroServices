@@ -30,7 +30,7 @@ namespace ServiceCustomWithPolly
                 //熔断前运行出现2次故障
                 2,
                 //熔断时间
-                TimeSpan.FromMinutes(5),
+                TimeSpan.FromSeconds(5),
                    onBreak: (ex, span) =>
                    {
                        //onBreak  进入熔断 OPEN

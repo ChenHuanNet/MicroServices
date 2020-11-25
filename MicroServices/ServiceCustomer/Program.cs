@@ -15,7 +15,7 @@ namespace ServiceCustomer
             var myServiceA = serviceProvider.CreateServiceBuilder((builder) =>
             {
                 builder.ServiceName = "MyServiceA";
-                builder.LoadBalancer = TypeLoadBalancer.RandomLoad;
+                builder.LoadBalancer = TypeLoadBalancer.RoundRobin;
                 builder.UriScheme = Uri.UriSchemeHttp;
             });
 
@@ -32,7 +32,7 @@ namespace ServiceCustomer
                         var uri = myServiceA.BuildAsync("/health").Result;
                         Console.WriteLine($"{DateTime.Now} - 正在调用:{uri}");
                         var content = httpClient.GetAsync(uri).Result;
-                        Console.WriteLine($"调用结果:{content}");
+                        Console.WriteLine($"调用结果:{content?.StatusCode}");
                     }
                     catch (Exception ex)
                     {
