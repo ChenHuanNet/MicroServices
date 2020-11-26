@@ -52,10 +52,12 @@ namespace ConsulServiceRegistration
 
             var features = app.Properties["server.Features"] as FeatureCollection;
             var address = features.Get<IServerAddressesFeature>().Addresses.FirstOrDefault();
-            if (string.IsNullOrEmpty(address))
+            Console.WriteLine($"address1:{address}");
+            if (string.IsNullOrEmpty(address) || address.Contains("+"))
             {
                 address = serviceOptions.LocalAddress; //新版本不会增加默认的端口
             }
+            Console.WriteLine($"address2:{address}");
 
             var uri = new Uri(address);
 
