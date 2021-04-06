@@ -1,6 +1,6 @@
 {
-  "ConsulAddress": "http://120.25.152.180:25500",
+  "ConsulAddress": "http://127.0.0.1:25500",
   "ServiceName": "MyServiceA",
   "HealthCheck": "/Health",
-  "LocalAddress": "http://120.25.152.180:10001"
+  "LocalAddress": "http://127.0.0.1:10001"
 }
